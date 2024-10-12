@@ -1,0 +1,38 @@
+{
+    "ga": {
+        "name": "gà",
+        "code": "ga",
+        "thucan": "thoc",
+        "emoji": "<:Yu_GaCon:953394343148920902>",
+        "production": {
+            "sell": 10000 
+        },
+        "maxHarvest": 5,
+        "minHarvest": 3,
+        "maturityTime": 10800000
+    },
+    "bo": {
+        "name": "bò",
+        "code": "bo",
+        "thucan": "co",
+        "emoji": "<:Yu_BoCon:953394492503908362>",
+        "production": {
+            "sell": 17000 
+        },
+        "maxHarvest": 5,
+        "minHarvest": 3,
+        "maturityTime": 21600000
+    },
+    "heo": {
+        "name": "heo",
+        "code": "heo",
+        "thucan": "camheo",
+        "emoji": "<:Yu_HeoCon:953396171181817997>",
+        "production": {
+            "sell": 13000 
+        },
+        "maxHarvest": 5,
+        "minHarvest": 3,
+        "maturityTime": 14400000
+    }
+}

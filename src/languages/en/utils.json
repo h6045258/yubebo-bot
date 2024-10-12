@@ -1,0 +1,17 @@
+{
+  "loading": "Đang tải vui lòng đợi...",
+
+  "language_1": "* Ngôn ngữ hiện tại của bot đang là {value} ({value2})",
+  "language_2": "* Ngôn ngữ của bot đã được cập nhật là {value} ({value2})",
+
+  "prefix_1": "Bạn cần nhập prefix để bot đổi, Prefix hiện tại của bot là {value}!",
+  "prefix_2": "Prefix bạn nhập chỉ được dưới 2 ký tự!",
+  "prefix_3": "Đã cập nhật thành công prefix cho server là {value}.",
+
+  "ping_1": "* Độ Trễ Hệ Thống: `{value1}ms`\n* Độ Trễ Ws_Shard: `{value2}ms`\n* {value3}\n\n* Uptime: <t:{value4}:d> <t:{value5}:R>",
+  "ping_2": "Cảm ơn bạn đã chọn Yubabe",
+  "ping_3": "Test reload json2 Chems ancut",
+  "ping4": "Test reload json3",
+  "ping5": "Test reload json4"
+
+}

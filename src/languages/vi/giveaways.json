@@ -1,0 +1,30 @@
+{
+  "end_1": "Không tìm thấy giveaway cho Id {value}, xin hãy kiểm tra lại!",
+  "end_2": "Giveaway đã được kết thúc.",
+  "end_3": "Đi Tới Giveaway",
+  "end_4": "Đã có lỗi xảy ra khi kết thúc giveaway, hãy thử lại sau!",
+
+  "reroll_1": "Không tìm thấy giveaway cho Id {value}, xin hãy kiểm tra lại!",
+  "reroll_2": "Người trúng giveaway mới: {value1}! Xin chúc mừng, bạn đã thắng Giveaways **{value2}**!\n{value3}",
+  "reroll_3": "Giveaway này chỉ có 1 người tham gia, không thể Reroll!",
+  "reroll_4": "Đã có lỗi xảy ra khi Reroll giveaway, hãy thử lại sau!",
+
+  "start_1": "Bạn chưa nhập thời gian cho giveaway!",
+  "start_2": "Giveaway bạn tạo không được vượt quá 15 ngày!",
+  "start_3": "Vui lòng bạn nhập đúng số lượng người thắng hợp lệ!",
+  "start_4": "Phần thưởng cho giveaway này là gì?, hãy cho tôi biết!",
+  "start_5": "Để giveaway hoạt động tối ưu và hiệu quả, 1 server chỉ chạy được 15 giveaway!",
+  "start_6": "**__Giveaway Đã Bắt Đầu__**",
+  "start_7": "**__Giveaway Đã Kết Thúc__**",
+  "start_8": "Đếm ngược {value1}",
+  "start_9": "Xin chúc mừng {value2}",
+  "start_10": "Đã trúng được **{value3}**",
+  "start_11": "Tổ chức bởi {value4}",
+  "start_12": "Giveaway kết thúc, không có người thắng nào",
+  "start_13": "Tổ chức bởi",
+  "start_14": "Người thắng",
+  "start_15": "Kết thúc vào lúc",
+  "start_16": "Đã có lỗi xảy ra khi tạo giveaway, hãy thử lại sau!",
+  "start_17": "Đi Tới Giveaway"
+  
+}

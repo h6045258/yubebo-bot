@@ -1,0 +1,18 @@
+{
+    "ycoin": {
+        "min": 8000,
+        "max": 40000
+    },
+    "gembox": {
+        "min": 2,
+        "max": 3
+    },
+    "pro_gembox": {
+        "min": 1,
+        "max": 2
+    },
+    "vip_gembox": {
+        "min": 1,
+        "max": 1
+    }
+}

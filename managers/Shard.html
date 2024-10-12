@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YubotDev Cluster Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.2.1/chartjs-plugin-zoom.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: url('https://cdn.discordapp.com/avatars/936872532932440065/61bc416ce87531f34f1d7e1576583ff5.png?size=4096') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            color: #fff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.light-mode {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease;
+        }
+
+        body.light-mode .container {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .welcome-banner {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        body.light-mode .welcome-banner {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .uptime {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        body.light-mode .uptime {
+            color: #2E7D32;
+        }
+
+        .chart-container {
+            width: 60%;
+            height: 300px;
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        body.light-mode .chart-container {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .clusters {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .cluster {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            width: calc(33% - 15px);
+            box-sizing: border-box;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        body.light-mode .cluster {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .cluster:hover {
+            transform: translateY(-5px);
+        }
+
+        button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .restart {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .kill {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle .fa-sun {
+            display: none;
+            color: #f1c40f;
+        }
+
+        .theme-toggle .fa-moon {
+            color: #f1c40f;
+        }
+
+        body.light-mode .theme-toggle .fa-sun {
+            display: inline-block;
+        }
+
+        body.light-mode .theme-toggle .fa-moon {
+            display: none;
+        }
+
+        .status-ready {
+            color: #4CAF50;
+        }
+
+        .status-not-ready {
+            color: #f44336;
+        }
+
+        @media (max-width: 1200px) {
+            .cluster {
+                width: calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cluster {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+        </button>
+        <h1>Yubabe Monitoring</h1>
+        <div class="welcome-banner">
+            <h2>Xin chào YubotDev</h2>
+            <p>Giám sát và kiểm soát nâng cao các cluster của Yubabe</p>
+        </div>
+        <div class="dashboard">
+            <div id="clusters" class="clusters"></div>
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isDarkTheme = true;
+        const performanceData = {};
+        let performanceChart;
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            isDarkTheme = !document.body.classList.contains('light-mode');
+            updateChartTheme();
+        }
+
+        function updateChartTheme() {
+            const textColor = isDarkTheme ? '#fff' : '#000';
+            performanceChart.options.scales.x.ticks.color = textColor;
+            performanceChart.options.scales.y.ticks.color = textColor;
+            performanceChart.options.plugins.legend.labels.color = textColor;
+            performanceChart.options.plugins.title.color = textColor;
+            performanceChart.update();
+        }
+
+        function formatUptime(uptimeInSeconds) {
+            const seconds = Math.floor(uptimeInSeconds);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+            const months = Math.floor(days / 30);
+            const remainingDays = days % 30;
+            const remainingHours = hours % 24;
+            const remainingMinutes = minutes % 60;
+            let uptimeString = '';
+            if (months > 0) uptimeString += `${months} tháng `;
+            if (remainingDays > 0) uptimeString += `${remainingDays} ngày `;
+            if (remainingHours > 0) uptimeString += `${remainingHours} giờ `;
+            if (remainingMinutes > 0) uptimeString += `${remainingMinutes} phút`;
+            return uptimeString.trim() || '< 1 phút';
+        }
+
+        function fetchStatus() {
+                fetch('/api/status')
+                    .then(response => response.json())
+                    .then(data => {
+                        const clustersDiv = document.getElementById('clusters');
+                        clustersDiv.innerHTML = '';
+                        data.clusters.forEach(cluster => {
+                            const clusterDiv = document.createElement('div');
+                            clusterDiv.className = 'cluster';
+                            const statusClass = cluster.status === 'sẵn sàng' ? 'status-ready' : 'status-not-ready';
+                            clusterDiv.innerHTML = `
+                            <h3>Cluster ${cluster.id}</h3>
+                            <p>Trạng thái: <span class="${statusClass}">${cluster.status}</span></p>
+                            <p>Shards: ${cluster.shards.join(', ')}</p>
+                            <p>Uptime: <span class="uptime">${formatUptime(cluster.uptime)}</span></p>
+                            <button class="restart" onclick="restartCluster(${cluster.id})">Khởi động lại</button>
+                            <button class="kill" onclick="killCluster(${cluster.id})">Kill</button>
+                        `;
+                            clustersDiv.appendChild(clusterDiv);
+                            const now = new Date();
+                            if (!performanceData[cluster.id]) {
+                                performanceData[cluster.id] = [];
+                            }
+                            performanceData[cluster.id].push({ x: now, y: Math.random() * 100 });
+                            if (performanceData[cluster.id].length > 10) {
+                                performanceData[cluster.id].shift();
+                            }
+                        });
+                        updateChart();
+                    });
+            }
+
+        function restartCluster(clusterId) {
+            if (confirm(`Bạn có chắc chắn muốn khởi động lại Cluster ${clusterId}?`)) {
+                fetch('/api/restart', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ clusterId })
+                }).then(() => fetchStatus());
+            }
+        }
+
+        function killCluster(clusterId) {
+            if (confirm(`Bạn có chắc chắn muốn kill Cluster ${clusterId}?`)) {
+                fetch('/api/kill', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ clusterId })
+                }).then(() => fetchStatus());
+            }
+        }
+
+        function updateChart() {
+            const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                aspectRatio: 2,
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'minute'
+                        },
+                        ticks: {
+                            maxTicksLimit: 5
+                        }
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        font: {
+                            size: 16
+                        },
+                        text: 'Hiệu suất Cluster theo thời gian'
+                    },
+                    zoom: {
+                        zoom: {
+                            wheel: {
+                                enabled: true,
+                            },
+                            pinch: {
+                                enabled: true
+                            },
+                            mode: 'xy',
+                        },
+                        pan: {
+                            enabled: true,
+                            mode: 'xy',
+                        }
+                    }
+                }
+            };
+            const createDatasets = (data) => Object.keys(data).map(clusterId => ({
+                label: `Cluster ${clusterId}`,
+                data: data[clusterId],
+                borderColor: `hsl(${clusterId * 60}, 70%, 50%)`,
+                tension: 0.4,
+                fill: false
+            }));
+            if (performanceChart) {
+                performanceChart.data.datasets = createDatasets(performanceData);
+                performanceChart.update();
+            } else {
+                performanceChart = new Chart(performanceCtx, {
+                    type: 'line',
+                    data: { datasets: createDatasets(performanceData) },
+                    options: commonOptions
+                });
+            }
+            updateChartTheme();
+        }
+
+        fetchStatus();
+        setInterval(fetchStatus, 10000);
+    </script>
+</body>
+
+</html>

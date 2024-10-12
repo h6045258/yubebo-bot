@@ -1,0 +1,31 @@
+{
+    "load": "<a:yl_loading:1109041890667544678>",
+    "box": "<a:yl_ga:901921067944271912>",
+
+    "swap_page": {
+         "previous": "<:ARROW1:874262374595588117>",
+         "rewind": "<:ARROW2:874262374733987860>",
+         "home": "<:HOME:894217044013248532>",
+         "forward": "<:ARROW3:874262374541049896>",
+         "skip": "<:ARROW4:874262374608150578>"
+    },
+     
+    "gembox": "<:GEMBOX:982028743952441355>",
+    "progembox": "<:PRO_GEMBOX:982028744057298964>",
+    "vipgembox": "<:VIP_GEMBOX:982028743889543278>",
+    "congrats": "<a:yl_ga:901921067944271912>",
+    "iuem": "<a:Yiuem:1135305522132811827>",
+    "loadbar": "<a:loadingbar:1136069277288501298>",
+    "done": "<:checked:1183702384837410837>",
+    "fail": "<:cancel:1183702388616482918>",
+    "arrow": "<a:Yu_MuiTen:953754849487499316>",
+    "coin": "<:Yu_Ycoin:953323682246316082>",
+    "ngoisao": "<a:Yl_ngoisaohivong:919968345418268714>",
+    "vp": "<:VIPPassport:988093810955411456>",
+    "pp": "<:ProPassport:988093838348410930>",
+    "mic": "<:yb_mic:1257733112675438645>",
+    "cancaugo": "<:Yu_cancaugo:952585355670995014>",
+    "cancauhiendai": "<:Yu_cancauhiendai:952585355759071283>",
+    "cancaupro": "<:Yu_cancaupro:952585356006535209>",
+    "cancaudacbiet": "<:Yu_cancaudacbiet:952585357143195718>"
+}

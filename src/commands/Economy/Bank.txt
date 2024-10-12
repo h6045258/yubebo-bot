@@ -1,0 +1,71 @@
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+
+module.exports = {
+  name: "bank",
+  category: "Economy",
+  aliases: [''],
+  cooldown: 5,
+  description: {
+    content: "Xem kiểm tra số tiền của bạn đang có trong ngân hàng",
+    example: "bank",
+    usage: "bank"
+  },
+  permissions: {
+    bot: ['ViewChannel', 'SendMessages'],
+    user: ''
+  },
+  run: async (client, message, args, prefix, lang) => {
+    const author = message.author;
+    const bank = await client.bank(author.id);
+
+    const link = `https://discord.com/users/${client.user.id}`;
+    const buttonLinker = new ButtonBuilder()
+      .setLabel(client.user.username)
+      .setURL(link)
+      .setStyle(ButtonStyle.Link);
+    const linker = new ActionRowBuilder().addComponents(buttonLinker);
+
+    if (client.config.dev.includes(author.id)) {
+      const target =
+        message.mentions.members.first() ||
+        client.users.cache.find((u) => u.id === args[0]) ||
+        author;
+      const banker = await client.bank(target.id);
+      return message.channel.send({
+        content: lang.economy.bank_1
+          .replace("{value1}", target.displayName)
+          .replace("{value2}", banker.toLocaleString()),
+      });
+    } else {
+      const ctx = await message.channel.send({
+        content: `${client.e.load} | ${lang.economy.bank_2}`,
+      });
+
+      const channelLink = `https://discord.com/channels/${message.guild.id}/${message.channel.id}/${ctx.id}`;
+      const buttonChannel = new ButtonBuilder()
+        .setLabel(`${lang.economy.bank_3} ${message.channel.name}`)
+        .setURL(channelLink)
+        .setStyle(ButtonStyle.Link);
+
+      const channelLinker = new ActionRowBuilder().addComponents(buttonChannel);
+
+      message?.react("💰");
+      ctx.edit({
+        content: lang.economy.bank_4,
+        components: [linker],
+      });
+      author
+        .send({
+          content: lang.economy.bank_5
+            .replace("{value1}", author.displayName)
+            .replace("{value2}", bank.toLocaleString()),
+          components: [channelLinker],
+        })
+        .catch(() => {
+          message.channel.send({
+            content: lang.economy.bank_6,
+          });
+        });
+    }
+  },
+};

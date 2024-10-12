@@ -1,0 +1,207 @@
+const dailySchema = require("../../models/dailySchema");
+const luckyicon = `<a:Yngoisaohivong:919968345418268714>`;
+const vipSchema = require("../../models/vipSchema");
+const marrySchema = require("../../models/marrySchema");
+
+module.exports = {
+    name: "daily",
+    category: "Economy",
+    aliases: ["diemdanh"],
+    cooldown: 5,
+    description: {
+        content: "Điểm danh nhận quà mỗi ngày",
+        example: "daily",
+        usage: "daily"
+    },
+    permissions: {
+        bot: ['ViewChannel', 'SendMessages'],
+        user: '',
+    },
+    run: async (client, message, args, prefix, lang) => {
+        let user = message.author;
+        let timeout = 3000;
+        let lastused = await client.cd(user.id, `addngoc`);
+        let used = client.checkcd(lastused, timeout);
+        let cooldown = used.after;
+        if (!cooldown) {
+            const delay = await message.channel.send({
+                content: `${client.e.fail} | ${user.displayName}, ${lang.economy.cooldown.replace('{value}', used.s)}`,
+            });
+            await client.sleep(5000);
+            await delay.delete();
+            return;
+        } else {
+            await client.timeout(user.id, `addngoc`);
+            const profile = await marrySchema.findOne({ authorid: user.id });
+            let a = await client.cd(user.id, `daily8`);
+            let day = await client.newday(a);
+            let inday = day.withinDay;
+            let after = day.after;
+            let vip = false;
+            let pro = false;
+            const provip = await vipSchema.findOne({ memberid: user.id });
+            if (provip) {
+                const date = await client.datepassport(user.id);
+                const status = await client.checkpassport(date);
+                let end = status.after;
+                if (!end && provip.type == `<:VIPPassport:988093810955411456>`)
+                    vip = true;
+                if (!end && provip.type == `<:ProPassport:988093838348410930>`)
+                    pro = true;
+            }
+            if (!after) {
+                await client.timeout(user.id, `daily8`);
+                const error = await message.channel.send({
+                    content: lang.economy.daily_1,
+                });
+                await client.sleep(5000);
+                await error.delete().catch(() => { });
+            } else if (after && inday) {
+                await client.timeout(user.id, `daily8`);
+                const data = await dailySchema.findOne({ id: user.id });
+                if (!data) {
+                    let newdata = new dailySchema({
+                        id: user.id,
+                        name: user.name,
+                        streak: 1,
+                    });
+                    await newdata.save();
+                } else {
+                    data.streak += 1;
+                    await data.save();
+                }
+                let streaks = data ? data.streak : 1;
+                let dailymoney = (Math.floor(Math.random() * 1999) + 500) * streaks;
+                if (profile) dailymoney *= 2;
+                await client.cong(user.id, dailymoney);
+
+                const msg = lang.economy.daily_2
+                    .replace("{value1}", user.username)
+                    .replace("{value2}", parseInt(dailymoney).toLocaleString())
+                    .replace("{value3}", streaks);
+
+                if (!pro && !vip) {
+                    let soluong = 1;
+                    const msg1 = profile ? lang.economy.daily_4.replace("{value}", profile.husbandid) : ` `;
+                    if (profile) soluong += 1;
+
+                    await client.addgem(user.id, `<:GEMBOX:982028743952441355>`, soluong, 0);
+
+                    message.channel.send({
+                        content: lang.economy.daily_4
+                            .replace('{value1}', msg)
+                            .replace("{luckyicon}", luckyicon)
+                            .replace("{value2}", user.username)
+                            .replace("{value3}", profile ? soluong - 1 : soluong)
+                            .replace("{value4}", msg1)
+                    });
+                }
+                else if (pro) {
+                    let soluong = 1;
+                    const msg1 = profile ? lang.economy.daily_4.replace("{value}", profile.husbandid) : ` `;
+                    if (profile) soluong += 1;
+
+                    await client.addgem(user.id, `<:PRO_GEMBOX:982028744057298964>`, 2, 0);
+                    await client.addgem(user.id, `<:GEMBOX:982028743952441355>`, soluong, 0);
+
+                    message.channel.send({
+                        content: lang.economy.daily_5
+                            .replace('{value1}', msg)
+                            .replace('{value2}', user.username)
+                            .replace('{value3}', profile ? soluong - 1 : soluong)
+                            .replace("{value4}", msg1)
+                    });
+                }
+                else if (vip) {
+                    let soluong = 1;
+                    const msg1 = profile ? lang.economy.daily_4.replace("{value}", profile.husbandid) : ` `;
+                    if (profile) soluong += 1;
+
+                    await client.addgem(user.id, `<:PRO_GEMBOX:982028744057298964>`, 2, 0);
+                    await client.addgem(user.id, `<:VIP_GEMBOX:982028743889543278>`, 2, 0);
+                    await client.addgem(user.id, `<:GEMBOX:982028743952441355>`, soluong, 0);
+
+                    message.channel.send({
+                        content: lang.economy.daily_6
+                            .replace('{value1}', msg)
+                            .replace('{value2}', user.username)
+                            .replace('{value3}', profile ? soluong - 1 : soluong)
+                            .replace("{value4}", msg1)
+                    });
+                }
+            } else if (after && !inday) {
+                await client.timeout(user.id, `daily8`);
+                const data = await dailySchema.findOne({ id: user.id });
+                if (!data) {
+                    let newdata = new dailySchema({
+                        id: user.id,
+                        name: user.name,
+                        streak: 1,
+                    });
+                    await newdata.save();
+                } else {
+                    data.streak = 1;
+                    await data.save();
+                }
+                let streaks = data ? data.streak : 1;
+
+                let dailymoney = (Math.floor(Math.random() * 99) + 1) * streaks;
+                if (profile) dailymoney *= 2;
+                await client.cong(user.id, dailymoney);
+
+                const msg = lang.economy.daily_2
+                    .replace('{value1}', user.username)
+                    .replace('{value2}', parseInt(dailymoney).toLocaleString())
+                    .replace('{value3}', streaks);
+
+                if (!pro && !vip) {
+                    let soluong = 1;
+                    const msg1 = profile ? lang.economy.daily_3.replace("{value}", profile.husbandid) : ` `;
+                    if (profile) soluong += 1;
+
+                    await client.addgem(user.id, `<:GEMBOX:982028743952441355>`, soluong, 0);
+
+                    message.channel.send({
+                        content: lang.economy.daily_7
+                            .replace('{value1}', msg)
+                            .replace("{luckyicon}", luckyicon)
+                            .replace('{value2}', user.username)
+                            .replace('{value3}', profile ? soluong - 1 : soluong)
+                            .replace('{value4}', msg1)
+                    });
+                } else if (pro) {
+                    let soluong = 1;
+                    const msg1 = profile ? lang.economy.daily_3.replace("{value}", profile.husbandid) : ` `;
+                    if (profile) soluong += 1;
+
+                    await client.addgem(user.id, `<:PRO_GEMBOX:982028744057298964>`, 2, 0);
+                    await client.addgem(user.id, `<:GEMBOX:982028743952441355>`, soluong, 0);
+
+                    message.channel.send({
+                        content: lang.economy.daily_5
+                            .replace('{value1}', msg)
+                            .replace('{value2}', user.username)
+                            .replace('{value3}', profile ? soluong - 1 : soluong)
+                            .replace("{value4}", msg1)
+                    });
+                } else if (vip) {
+                    let soluong = 1;
+                    const msg1 = profile ? lang.economy.daily_3.replace("{value}", profile.husbandid) : ` `;
+                    if (profile) soluong += 1;
+
+                    await client.addgem(user.id, `<:PRO_GEMBOX:982028744057298964>`, 2, 0);
+                    await client.addgem(user.id, `<:VIP_GEMBOX:982028743889543278>`, 2, 0);
+                    await client.addgem(user.id, `<:GEMBOX:982028743952441355>`, soluong, 0);
+
+                    message.channel.send({
+                        content: lang.economy.daily_8
+                            .replace('{value1}', msg)
+                            .replace('{value2}', user.username)
+                            .replace('{value3}', profile ? soluong - 1 : soluong)
+                            .replace("{value4}", msg1)
+                    });
+                }
+            }
+        }
+    },
+};

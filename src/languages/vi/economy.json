@@ -1,0 +1,53 @@
+{
+
+  "cooldown": "bạn từ từ thôi cho tôi thở phát... **{value}** nữa hãy gõ tiếp!",
+
+  "daily_1": "Bạn đã điểm danh hôm nay rồi!",
+  "daily_2": "<a:Yngoisaohivong:919968345418268714> **| {value1}**, bạn nhận được **{value2} Ycoin!** Bạn đã điểm danh liên tục : **{value3}** ngày!",
+  "daily_3": ", và 1 hộp thêm vì đã cưới <@{value}>",
+  "daily_4": "{value1}\n{luckyicon} | **{value2}**, bạn đã được tặng {value3} <:GEMBOX:982028743952441355>{value4} cho ngày hôm nay!",
+  "daily_5": "{value1}\n<:ProPassport:988093838348410930> | **{value2}**, bạn đã được tặng {value3} <:GEMBOX:982028743952441355>{value4} và được thêm 2 <:PRO_GEMBOX:982028744057298964> cho ngày hôm nay vì đã đăng ký PRO-PASSPORT !",
+  "daily_6": "{value1}\n<:VIPPassport:988093810955411456> | **{value2}**, bạn đã được tặng {value3} <:GEMBOX:982028743952441355>{value4} và được thêm 2 <:PRO_GEMBOX:982028744057298964>, 2 <:VIP_GEMBOX:982028743889543278> cho ngày hôm nay vì đã đăng ký VIP-PASSPORT !",
+  "daily_7": "{value1}\n{luckyicon} | **{value2}**, bạn đã được tặng {value3} <:GEMBOX:982028743952441355>{value4} cho ngày hôm nay!",
+  "daily_8": "{value1}\n{luckyicon} | **{value2}**, bạn đã được tặng {value3} <:GEMBOX:982028743952441355>{value4} cho ngày hôm nay!",
+
+  "give_1": "<:cancel:1183702388616482918> | Vui lòng đề cập một người để chuyển tiền",
+  "give_2": "<:cancel:1183702388616482918> | Định buff tiền hả, ăn dễ quá he!!",
+  "give_3": "<:cancel:1183702388616482918> | Vui lòng đề cập một người để chuyển tiền",
+  "give_4": "<:cancel:1183702388616482918> | Số tiền không hợp lệ!",
+  "give_5": "<:cancel:1183702388616482918> | Người sống không chơi tiền âm !",
+  "give_6": "<:cancel:1183702388616482918> | Con đỗ nghèo khỉ, check lại tiền đi cưng !",
+  "give_7": "Xác Nhận",
+  "give_8": "Từ Chối",
+  "give_9": "Xác Nhận Giao Dịch",
+  "give_10": "{value1}, bạn có chắc là sẽ chuyển cho {value2} chứ\n\nĐể chấp nhận hãy bấm vào nút ✅\nĐể từ chối hãy bấm vào nút ❎\n\n⚠️ *Cảnh báo, mọi hành động giao dịch tiền tệ, trao đổi, buôn bán hoặc đổi quà với giá trị tương đương **đều không bị ban**, cho đến khi bị discord sờ gáy thì tôi sẽ không cấm đều này*.\n\n## {value1} sẽ give cho {value2}:\n```ts\n{value3}```\n*hành động này không thể hoàn tác !*",
+  "give_11": "Nút này không dành cho bạn !",
+  "give_12": "<a:banking:937082483466448896> **| {value1}**, bạn đã chuyển **{value3} Ycoin** cho **{value2}**",
+  "give_13": "<:cancel:1183702388616482918> | Giao dịch đã bị hủy!",
+  "give_14": "Đã hết thời gian giao dịch",
+  "give_15": "Bạn đang có giao dịch chưa kết thúc, vui lòng hoàn tất giao dịch đó và thử lại !",
+
+  "balance_1": "<:Yu_Ycoin:953323682246316082> **|** **{value1}** , bạn đang có **{value2} Ycoin**",
+
+  "bank_1": "Số tiền của {value1} trong ngân hàng là: {value2}",
+  "bank_2": "Đang load vui lòng đợi,...",
+  "bank_3": "Quay trở lại",
+  "bank_4": "Kiểm tra tin nhắn mới từ bot!",
+  "bank_5": "{value1}, bạn đang có số tiền này trong ngân hàng của mình: {value2}",
+  "bank_6": "Không thể gửi tin nhắn riêng tư, vui lòng kiểm tra cài đặt của bạn.",
+
+  "withdraw_1": "<:cancel:1183702388616482918> | Vui lòng nhập số tiền muốn tiết kiệm!",
+  "withdraw_2": "<:cancel:1183702388616482918> | Người sống mà xài bank âm",
+  "withdraw_3": "",
+  "withdraw_4": "",
+  "withdraw_5": "",
+  "withdraw_6": "Đã có lỗi xảy ra khi rút tiền, hãy thử lại sau!",
+
+  "work_1": "{value1}, bạn quá mệt để đi làm,... Hãy quay lại làm sau **{value2}** nữa!",
+  "work_2": "{value1}, bạn đã đi làm và được trả lương **{value2} Ycoin và x1 <:GEMBOX:982028743952441355>**\n`VOTE CHO BOT MỖI 12G ĐỂ NHẬN 3 GEMBOX!`",
+  "work_3": "{value1}, bạn đã đi làm và được trả **{value2} Ycoin và x1 <:PRO_GEMBOX:982028744057298964> [PRO-PASSPORT]**\n`VOTE CHO BOT MỖI 12G ĐỂ NHẬN 3 GEMBOX!`",
+  "work_4": "{value1}, bạn đã đi làm và được trả **{value2} Ycoin, x1 <:GEMBOX:982028743952441355> và x1 <:PRO_GEMBOX:982028744057298964> [VIP-PASSPORT]**\n`VOTE CHO BOT MỖI 12G ĐỂ NHẬN 3 GEMBOX!`",
+  "work_5": "Đã có lỗi xảy ra khi làm việc, hãy thử lại sau!"
+  
+
+}

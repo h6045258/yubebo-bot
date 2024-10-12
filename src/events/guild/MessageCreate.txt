@@ -1,0 +1,394 @@
+const {
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    EmbedBuilder,
+    Component,
+    Collection,
+    AttachmentBuilder,
+    PermissionsBitField
+} = require("discord.js");
+const prefix_data = require("../../models/prefixSchema.js");
+const BanSchema = require("../../models/BanSchema.js");
+const BanGSchema = require("../../models/banguild.js")
+const bankSchema = require("../../models/bankSchema.js")
+const User = require("../../models/userSchema.js")
+const { QuickDB } = require("quick.db")
+const db = new QuickDB({ table: "DB" });
+module.exports = {
+    event: "messageCreate",
+    run: async (client, message) => {
+        try {
+            if (message.channel.type == 1 && !message.author.bot) {
+
+                const Dmslog = "995449835350151269";
+                const DMS = await client.channels.fetch(Dmslog);
+                let onCaptcha3 = await db.get(`${message.author.id}_captchaDMS`)
+                let captchaText3 = await db.get(`${message.author.id}_captchaDMSText`)
+                if (onCaptcha3) {
+                    if (message.content == captchaText3) {
+                        await db.delete(`${message.author.id}_captchaDMS`)
+                        await db.delete(`${message.author.id}_captchaDMSText`)
+                        await message.reply(`Bạn đã hoàn thành captcha, bạn có thể sử dụng bot tiếp !`)
+                    }
+                }
+                let embed = new EmbedBuilder()
+                    .setTitle(message.author.username + " đã DMS")
+                    .setDescription(message.content)
+                    .setThumbnail(message.author.avatarURL())
+                    .addFields({ name: "ID", value: message.author.id })
+                    .setTimestamp();
+                let a = await DMS.send({
+                    content: `Dùng Ydm ${message.author.id} để reply mà không hiện tên Mod! 
+    Ydms ${message.author.id} để reply với tên Mod`, embeds: [embed]
+                })
+            } else {
+                if (message.author.bot) return;
+                if (
+                    !message.guild ||
+                    message.guild.available === false ||
+                    !message.channel ||
+                    message.webhookId
+                )
+                    return;
+                if (message.channel?.partial)
+                    await message.channel.fetch().catch(() => { });
+                if (message.member?.partial)
+                    await message.member.fetch().catch(() => { });
+                let onCaptcha4 = await db.get(`${message.author.id}_captchaDMS`)
+                const user = await bankSchema.findOne({ id: message.author.id });
+                if (!user) {
+                    const newUser = new bankSchema({
+                        id: message.author.id,
+                        yucoins: 0,
+                        coins: 0,
+                    });
+                    await newUser.save()
+                    return;
+                }
+                const user2 = await User.findOne({ userId: message.author.id })
+                if (!user2) {
+                    const newUser = new User({
+                        userId: message.author.id
+                    })
+                    await newUser.save()
+                    return;
+                }
+                const anti = require('../../handlers/Antilink.js')
+                anti(client, message)
+                const wave = require("../../handlers/Autowavetool.js")
+                wave(client, message)
+                const xp = require('../../handlers/Level.js')
+                xp(client, message)
+                const data = await prefix_data.findOne({
+                    GuildId: message.guild.id,
+                });
+                let defaultPrefix = "y";
+                const escapeRegex = (str) =>
+                    str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                let prefix = data
+                    ? escapeRegex(data.prefix)
+                    : escapeRegex(defaultPrefix);
+                let prefixRegex = new RegExp(
+                    `^(<@!?${client.user.id}>|${escapeRegex(defaultPrefix)}|${prefix})\\s*`,
+                    "i",
+                );
+                if (!prefixRegex.test(message.content)) return;
+                const [, matchedPrefix] = message.content.match(prefixRegex);
+                let args = message.content
+                    .slice(matchedPrefix.length)
+                    .trim()
+                    .split(/ +/g);
+                let cmd = args.shift().toLowerCase();
+                if (cmd.length === 0) {
+                    if (matchedPrefix.includes(client.user.id)) {
+                        const row = new ActionRowBuilder().addComponents(
+                            new ButtonBuilder()
+                                .setLabel("SUPPORT SERVER")
+                                .setURL("https://discord.gg/ZbAT9jt5Ak")
+                                .setStyle(ButtonStyle.Link)
+                                .setEmoji("1123672139988484176"),
+                        );
+                        const embed = client
+                            .embed()
+                            .setColor(client.color.y)
+                            .setDescription(
+                                `Xin chào, prefix của tôi là \`${defaultPrefix}\` hoặc \`${data ? data.prefix : defaultPrefix}\` cho \`${defaultPrefix}help\` or \`${data ? data.prefix : defaultPrefix}help\`\nNếu gặp lỗi hoặc bug, liên hệ dev qua nút phía dưới !`,
+                            );
+                        return message.channel.send({
+                            embeds: [embed],
+                            components: [row],
+                        });
+                    }
+                }
+
+                let command =
+                    client.commands.get(cmd) ||
+                    client.commands.find(
+                        (command) =>
+                            command.aliases && command.aliases.includes(cmd),
+                    );
+                if (!command) return;
+
+                if (!client.config.dev.includes(message.author.id)) return;
+
+                if (
+                    command.permissions?.dev &&
+                    !client.config.dev.includes(message.author.id)
+                ) {
+                    return message.reply(
+                        `${client.e.fail} | Lệnh này chỉ dành cho nhà phát triển của bot!`,
+                    );
+                }
+
+                if (command.permissions?.bot) {
+                    const botPerms = command.permissions.bot;
+                    if (!message.guild.members.me.permissions.has(botPerms)) {
+                        return message.reply(
+                            `${client.e.fail} | Bot cần có quyền sau: \`${botPerms.join(", ")}\` để sử dụng lệnh \`${command.name}\``,
+                        );
+                    }
+                }
+
+                if (command.permissions?.user) {
+                    const userPerms = command.permissions.user;
+                    if (!message.member.permissions.has(userPerms)) {
+                        return message.reply(
+                            `${client.e.fail} | Bạn cần có quyền sau: \`${userPerms.join(", ")}\` để sử dụng lệnh \`${command.name}\``,
+                        );
+                    }
+                }
+                let not_allowed = false;
+                //Check cooldown khi dùng lệnh
+                if (!client.cooldowns.has(command.name)) {
+                    client.cooldowns.set(command.name, new Collection());
+                }
+                const now = Date.now();
+                const timest = client.cooldowns.get(command.name);
+                const cdam = (command.cooldown || 1) * 1000;
+                if (timest.has(message.author.id)) {
+                    let extime = timest.get(message.author.id) + cdam;
+                    if (now < extime) {
+                        let timelms = (extime - now);
+                        if (timelms < 1) timelms = Math.round(timelms / 1000);;
+                        const timels = Math.round(timelms / 1000);
+                        const timeux = Math.floor(Date.now() / 1000) + timels;
+                        const timestamp = `<t:${timeux}:R>`;
+                        if (timelms && timelms != 0) {
+                            not_allowed = true;
+                            const logId = "1261103019869868032";
+                            const spamId = await client.channels.fetch(logId);
+                            const embed = new EmbedBuilder()
+                                .setColor(client.color.x)
+                                .setAuthor({ name: `Spamming Log`, iconURL: message.member.displayAvatarURL() })
+                                .addFields([
+                                    { name: `Lệnh Spam`, value: `${command.name} ${timels.toFixed(1)}` },
+                                    { name: `Người Spam`, value: `${message.author} | ${message.author.username} - ${message.member.displayName}\n(${message.author.id})` },
+                                    { name: `Server`, value: `${message.guild.name}(${message.guild.id})` }
+                                ]);
+                            spamId.send({ embeds: [embed] }).catch(() => { });
+                            client.logger.warn(`[SPAMING] - LỆNH ${command.name.toUpperCase()} • ${message.author.tag.toUpperCase()}-(${message.member.displayName.toUpperCase()}) • Tại ${message.guild.name.toUpperCase()}_(${message.guild.id})`);
+                            const cdm = await message.channel.send(`* **${client.e.fail} | ${message.member.displayName}!**, Hãy chậm lại và thử lại lệnh \`${command.name}\` sau ${timestamp}`);
+                            setTimeout(async () => {
+                                try {
+                                    await cdm.delete().catch(e => console.error('Lỗi không thể xóa message', e))
+                                } catch { }
+                            }, timelms < 15000 ? timelms : 15000);
+                            return;
+                        }
+                    }
+                }
+                timest.set(message.author.id, now);
+                setTimeout(() => timest.delete(message.author.id), cdam);
+                if (command) {
+                    const ban = await BanSchema.findOne({ memberid: message.author.id })
+                    if (ban && message.author.id !== "696893548863422494") return;
+                    const banG = await BanGSchema.findOne({ guildid: message.guild.id })
+                    if (banG) return
+                    if (!message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.Flags.SendMessages))
+                        return message.author
+                            .send(`${client.e.fail} | Tôi không thể gửi tin nhắn trong kênh \`${message.channel.name}\``)
+                            .catch(e => console.log(e))
+                    const softban = await db.get(`${message.author.id}_softban1`);
+                    if (softban == null) {
+                        const policy = new EmbedBuilder()
+                            .setAuthor({ name: "Policy & Term of Service", url: "https://discord.gg/ZbAT9jt5Ak", iconUrl: client.user.defaultAvatarURL })
+                            .setTitle("BẰNG VIỆC SỬ DỤNG BOT CỦA CHÚNG TÔI")
+                            .setDescription(`Bạn Đồng Ý Với Việc:
+1. Tuân Thủ Luật và [Chính Sách Người Dùng](${"https://docs.google.com/document/d/1Llz1gBynvTooI-S5jAWlTiuQZqe6Bp9QV-Vhd14080A/edit?usp=drivesdk"}) Tại [Support Server](${"https://discord.gg/ZbAT9jt5Ak"})!
+2. Đảm bảo không sử dụng các phần mềm thứ 3 gây ảnh hưởng đến tài nguyên bot.
+3. Đảm bảo chịu trách nhiệm về các thông tin chia sẻ công khai tại Discord!`)
+                            .setFooter({ text: "Để biết thêm thông tin, vui lòng nhấp vào link bên trên" })
+                        let pp = await message.reply({ embeds: [policy] }).catch((err) => {
+                            return
+                        })
+                        await client.sleep(10000)
+                        await pp.delete().catch((err) => {
+                            return
+                        })
+                        if (ban) {
+                            if (ban.memberid == message.author.id) await db.set(`${message.author.id}_softban1`, true)
+                        }
+                        else {
+                            await db.set(`${message.author.id}_softban1`, false)
+                        }
+                    }
+                    else if (softban == true) return
+                    else {
+                        if (onCaptcha4) {
+                            let onCaptchaTimes = await db.get(`${message.author.id}_captchaDMSTime`);
+                            if (onCaptchaTimes == 0) {
+                                const banned = new BanSchema({ memberid: message.author.id, guildid: message.guild.id })
+                                await banned.save()
+                                const yukii = client.users.cache.find(u => u.id == `696893548863422494`)
+                                await yukii.send(`<@696893548863422494> | **${message.author.username} (${message.author.id})** đã bị ban bởi captcha!`)
+                                await message.reply(`<:Yl_ban:911688495867777044> | Bạn đã bị ban vì không thực hiện CAPTCHA!
+	Nếu bạn nghĩ đây là nhầm lẫn, vui lòng liên hệ support tại : https://discord.gg/ZbAT9jt5Ak để được appeal!`)
+                                await db.delete(`${message.author.id}_captchaDMSTime`)
+                                await db.delete(`${message.author.id}_captchaDMSText`)
+                                await db.delete(`${message.author.id}_captchaDMS`)
+                                return;
+                            }
+                            await message.reply(`<:fail:1032637321448796232> | Bạn phải dms tôi mã captcha ! Bạn còn **[${onCaptchaTimes}/5]** lần cảnh báo!`)
+                            await db.sub(`${message.author.id}_captchaDMSTime`, 1)
+                            return;
+                        }
+
+                        let a = await db.get(`${message.channel.id}_${command.name}`)
+                        const success = `:x: | Lệnh đã bị vô hiệu hóa tại ${message.channel.name} !`
+                        if (a === `false`) return message.channel.send(success).then(async msg => {
+                            await client.sleep(4000)
+                            await msg.delete()
+                        })
+                        await db.set(`CD${command.name}_${message.author.id}`, Date.now())
+                        const buttons = new ButtonBuilder()
+                            .setStyle(ButtonStyle.Danger)
+                            .setLabel('Check AutoSpam')
+                            .setCustomId(`${message.id}_loggingButtons`);
+                        const row_one = new ActionRowBuilder().addComponents(buttons)
+                        try {
+                            const lang = await client.la(message.guild.id);
+                            await command
+                                .run(client, message, args, matchedPrefix, lang)
+                                .catch((e) => console.log(e));
+                            const YubabeLog = client.guilds.cache.get("1157597853431103559").channels.cache.get("1254984842295119933");
+                            const logging = await YubabeLog.send({
+                                embeds: [new EmbedBuilder()
+                                    .setAuthor({ name: message.author.username, iconURL: message.author.displayAvatarURL() })
+                                    .setTitle(`${message.author.username} đã dùng lệnh ${command.name} tại ${message.guild.name}`)
+                                    .addFields(
+                                        [
+                                            { name: `Guild : ${message.guild.name}`, value: message.guild.id },
+                                            { name: `Channel : ${message.channel.name}`, value: message.channel.id },
+                                            { name: `Message : ${message.content}`, value: message.id },
+                                            { name: `User : ${message.author.username}`, value: message.author.id },
+                                        ]
+                                    )
+                                ],
+                                components: [row_one]
+                            })
+                            const filter = i => i.isButton() && i.message.author.id == client.user.id
+                            const collector = YubabeLog.createMessageComponentCollector({ filter: filter, time: 10_000 });
+                            collector.on("collect", async (interaction) => {
+                                if (interaction.customId == `${message.id}_loggingButtons`) {
+                                    interaction.deferUpdate()
+                                    try {
+                                        const { createCanvas, registerFont } = require('canvas');
+                                        let captchaText = '';
+                                        const FONT_FILE_PATH = './assets/fonts/BlaxSlabXXL.ttf';
+                                        const CAPTCHA_LENGTH = 6;
+                                        const DOT_COUNT = 300;
+                                        const LINE_COUNT = 28;
+                                        function getRandomHexColor() {
+                                            let color;
+                                            do {
+                                                color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                                            } while (color === '#000000'); // Keep generating until a non-black color is obtained
+                                            return color;
+                                        }
+                                        registerFont(FONT_FILE_PATH, { family: 'Serif' })
+                                        function generateCaptcha(width, height) {
+                                            const canvas = createCanvas(width, height);
+                                            const ctx = canvas.getContext('2d');
+                                            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                                            for (let i = 0; i < CAPTCHA_LENGTH; i++) {
+                                                captchaText += characters.charAt(Math.floor(Math.random() * characters.length));
+                                            }
+                                            // Set canvas background with a random hex color
+                                            const backgroundColor = getRandomHexColor();
+                                            ctx.fillStyle = backgroundColor;
+                                            ctx.fillRect(0, 0, width, height);
+                                            // Draw captcha text using the Arial font
+                                            ctx.font = `80px Serif`;
+                                            ctx.fillStyle = 'black';
+                                            ctx.textAlign = 'center';
+                                            ctx.textBaseline = 'middle';
+                                            ctx.fillText(captchaText, width / 2, height / 2);
+                                            // Draw random dots
+                                            for (let i = 0; i < DOT_COUNT; i++) {
+                                                ctx.fillStyle = getRandomHexColor();
+                                                ctx.beginPath();
+                                                ctx.arc(Math.random() * width, Math.random() * height, Math.random() * 2, 0, Math.PI * 2);
+                                                ctx.fill();
+                                            }
+                                            // Draw random lines
+                                            for (let i = 0; i < LINE_COUNT; i++) {
+                                                ctx.strokeStyle = getRandomHexColor();
+                                                ctx.beginPath();
+                                                ctx.moveTo(Math.random() * width, Math.random() * height);
+                                                ctx.lineTo(Math.random() * width, Math.random() * height);
+                                                ctx.stroke();
+                                            }
+
+
+                                            // Return the captcha image as a Discord.js attachment
+                                            return canvas.toBuffer()
+                                        }
+                                        const canvasW = 300; // rộng
+                                        const canvasH = 100; // cao
+                                        let image = generateCaptcha(canvasW, canvasH);
+                                        const attachment = new AttachmentBuilder(image, 'profile-image.png');
+                                        await YubabeLog.send({ content: `${client.e.done} | Đã gửi CAPTCHA ${captchaText}`, files: [attachment] })
+                                        await db.set(`${message.author.id}_captchaDMS`, true)
+                                        await db.set(`${message.author.id}_captchaDMSText`, captchaText)
+                                        await db.set(`${message.author.id}_captchaDMSTime`, 5)
+                                        await message.reply({
+                                            content: `### 𝓒𝓐𝓟𝓣𝓒𝓗𝓐 DMS !!! Hãy DMS tôi với mã captcha này để chứng minh bạn không auto-spam!\nBạn còn [5/5] cảnh báo!\nNếu bạn gặp vấn đề về giải captcha, xin hãy tải ảnh này về và Screen-shot màn hình DMS của tôi đến Support Server để được trợ giúp!`, files: [attachment]
+                                        })
+                                    } catch (e) {
+                                        console.log("Lỗi button check AUTO", e)
+                                    }
+                                }
+                            })
+                            collector.on("end", async () => {
+                                collector.stop()
+                                buttons.setDisabled(true);
+                                const row_disbled = new ActionRowBuilder().addComponents(buttons)
+                                await logging.edit({ content: `Tin nhắn này đã hết hạn`, components: [row_disbled] });
+                            })
+                        } catch {
+                            async err => {
+                                console.err
+                                const guilds = client.guilds.cache.find(c => c.id === '1157597853431103559');
+                                const ChRules = guilds.channels.cache.find(c => c.id === '1254984842295119933')
+                                ChRules.send(err)
+                            }
+                        }
+
+                        const lang = await client.la(message.guild.id);
+                        await command
+                            .run(client, message, args, matchedPrefix, lang)
+                            .catch((e) => console.log(e));
+                        let text2 = `[${message.author.tag.toUpperCase()} ĐÃ DÙNG LỆNH ${command.name.toUpperCase()} TẠI ${message.guild.name.toUpperCase()}]`;
+                        client.logger.log(
+                            `[SHARD ${client.cluster ? client.cluster.id : undefined}] ${text2}`,
+                        );
+                    }
+                }
+            }
+        } catch (e) {
+            client.logger.error(e.stack);
+            client.logger.error(`Có lỗi xảy ra\n${e}`);
+        }
+    },
+};

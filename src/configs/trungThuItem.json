@@ -1,0 +1,30 @@
+{
+    "longdenchongnuoc": {
+        "name": "lồng đèn chống nước",
+        "emoji": "<:longden:1284438832741220392>"
+    },
+    "que": {
+        "name": "que",
+        "emoji": "<:stick:1284016965542744105>"
+    },
+    "giay": {
+        "name": "giấy",
+        "emoji": "<:paper:1284016962866909196> "
+    },
+    "mau": {
+        "name": "màu",
+        "emoji": "<:coloredpencils:1284016952981065829> "
+    },
+    "nen": {
+        "name": "nến",
+        "emoji": "<:candle:1284016954834681876> "
+    },
+    "bangkeo": {
+        "name": "băng keo",
+        "emoji": "<:maskingtape:1284016959947538484>"
+    },
+    "batlua": {
+        "name": "bật lửa",
+        "emoji": "<:lighter:1284016956709666889> "
+    }
+}

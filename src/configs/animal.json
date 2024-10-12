@@ -1,0 +1,1034 @@
+{
+  "common": [
+    0.690009,
+    "🐛",
+    "🪱",
+    "🐞",
+    "🐌",
+    "🦋"
+  ],
+  "uncommon": [
+    0.900009,
+    "🐭",
+    "🐰",
+    "🐱",
+    "🐶",
+    "🦊"
+  ],
+  "rare": [
+    0.996999,
+    "🐓",
+    "🐖",
+    "🐏",
+    "🐄",
+    "🐃"
+  ],
+  "superrare": [
+    0.998999,
+    "🦎",
+    "🐢",
+    "🦂",
+    "🐍",
+    "🐊"
+  ],
+  "epic": [
+    0.999989,
+    "🐒",
+    "🦛",
+    "🐆",
+    "🐅",
+    "🐘"
+  ],
+  "pro": [
+    null,
+    "<a:Yu_bongoSushi:1038473923584598026>",
+    "<a:Ybutterfly:911682101005398058>",
+    "<a:yl_ngoisao:1109036321927872562>",
+    "<a:yl_ca_zoo:1109035822893764669>",
+    "<:Ykhatrapboi:918082945686851615>",
+    "<:be_non:918932737543503912>",
+    "<a:Yu_meobaymau:944351775597674558>",
+    "<:Yquyxu:941244934797799434>",
+    "<a:GG_hongchuyen:911309645681946685>",
+    "<a:Yu_ghost:1037432627059241010>",
+    "<:P_trolllungdz:1137062114717093969>"
+  ],
+  "glory": [
+    null,
+    "<:G_naisungtam:974392899536056401>",
+    "<:G_kilan:974392813095616542>",
+    "<:G_gautruc:974392721106149466>",
+    "<:G_cho:974392664445308958>",
+    "<:G_chim:974392505317597194>",
+    "<:G_caoden:974392590029959188>",
+    "<:G_bachtuoc:974392970931470347>"
+  ],
+  "devil": [
+    null,
+    "<:D_Chimera:985411852542562344>",
+    "<:D_Hydra:985411855927349298>",
+    "<:D_Medusa:985411858557202513>",
+    "<:D_Minotaur:985411860922761276>",
+    "<:D_Pegasus:985411864324358184>"
+  ],
+  "vip": [
+    null,
+    "<a:Yu_MikuGold:1038482863881977906>",
+    "<a:Yu_songoku:1037954556052652132>",
+    "<a:V_Cinderella:988149859745943592>",
+    "<a:V_Sonic:988149031291215914>",
+    "<a:V_Vanellope:988148591669440615>",
+    "<a:V_Belle:988150258066423858>",
+    "<a:V_BossBaby:988147327292276756>",
+    "<a:V_Mikey:994182093183655966>",
+    "<a:V_chochaynhanh:1135298298626969660>"
+  ],
+  "numbers": [
+    "⁰",
+    "¹",
+    "²",
+    "³",
+    "⁴",
+    "⁵",
+    "⁶",
+    "⁷",
+    "⁸",
+    "⁹"
+  ],
+  "order": [
+    "common",
+    "uncommon",
+    "rare",
+    "superrare",
+    "epic",
+    "pro",
+    "glory",
+    "devil",
+    "vip"
+  ],
+  "alias": {
+    "c": "common",
+    "uc": "uncommon",
+    "u": "uncommon",
+    "r": "rare",
+    "s": "superrare",
+    "sr": "superrare",
+    "e": "epic",
+    "p": "pro",
+    "gl": "glory",
+    "g": "glory",
+    "d": "devil",
+    "v": "vip"
+  },
+  "price": {
+    "common":2,
+    "uncommon":6,
+    "rare":20, 
+    "superrare":50,
+    "epic":500, 
+    "pro" : 30000, 
+      "glory" : 5000,
+      "devil" : 20000, 
+      "vip" : 150000 
+  },
+  "points": {
+    "common": 1,
+    "uncommon": 3,
+    "rare": 10,
+    "superrare": 50,
+    "epic": 250,
+    "pro": 15000,
+    "glory": 5000,
+    "devil": 10000,
+    "vip": 50000
+  },
+  "ranks": {
+    "common": "<:thuC:974055213549891634>",
+    "uncommon": "<:thuU:974055213772185621>",
+    "rare": "<:thuR:974055213566660669>",
+    "superrare": "<:thuSR:974055213726064670>",
+    "epic": "<:thuE:974055213495361546>",
+    "pro": "<:thuP:974055213189189653>",
+    "glory": "<:thug:974055213633790004>",
+    "devil": "<:thuD:974055213361139753>",
+    "vip": "<:thuV:974055213730234388>"
+  },
+  "list": {
+    "bug": {
+      "name": "bug",
+      "ten": "sau",
+      "unicode": "🐛",
+      "des": [
+        "Một chú sâu bướm vui vẻ! Còn bao nhiêu ngày nữa nó mới có thể bay nhỉ ?",
+        "A happy butterfly bug! How many days left till it can fly?"
+      ],
+      "price": 2,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "worm": {
+      "name": "worm",
+      "ten": "giun",
+      "unicode": "🪱",
+      "des": [
+        "Nó cứ đào đất hàng ngày... Mục tiêu nó là tìm thấy mỏ vàng lớn nhất chăng ??",
+        "It keep digging the ground! Does it looking for some treasure?"
+      ],
+      "price": 2,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "lady_beetle": {
+      "name": "lady_beetle",
+      "ten": "giun",
+      "unicode": "🐞",
+      "des": [
+        "Tên tiếng Anh của nó là Lady Bug... Bọn này có giới tính nam không nhỉ?",
+        "Hmm.. Lady bug? Are there any gentlemen ?"
+      ],
+      "price": 2,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "snail": {
+      "name": "snail",
+      "ten": "sen",
+      "unicode": "🐌",
+      "des": [
+        "Nghe đồn con sên này từng chạy đua thắng một con giun đất!",
+        "They said that this snail run even faster than worms"
+      ],
+      "price": 2,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "butterfly": {
+      "name": "butterfly",
+      "ten": "buom",
+      "unicode": "🦋",
+      "des": [
+        "Chú bướm này ngày đó từng rất thích ăn lá, hôm nay nó đã chuyển sang phấn hoa rồi! Ngày mai ăn gì nhỉ ?",
+        "When it was young, it's really love eating leafs, for now is flower dust. How about tomorrow ?"
+      ],
+      "price": 2,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "mouse": {
+      "name": "mouse",
+      "ten": "chuot",
+      "unicode": "🐭",
+      "des": [
+        "Liệu nó có thể giật tóc bạn và chỉ bạn cách nấu ăn không nhỉ ?",
+        "They called it a rat... It's preferred Ratatouille"
+      ],
+      "price": 6,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "rabbit": {
+      "name": "rabbit",
+      "ten": "tho",
+      "unicode": "🐰",
+      "des": [
+        "Thật ra nó rất tốt bụng! Cuộc đua năm ấy, nó đã cố tình để rùa chiến thắng!",
+        "Who knows ? It let turtle win cause it don't want others shaming his friend!"
+      ],
+      "price": 6,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "cat": {
+      "name": "cat",
+      "ten": "meo",
+      "unicode": "🐱",
+      "des": [
+        "Hừm! Bọn chuột phá phách, hãy chờ đến khi nó tìm thấy! Bọn chúng sẽ không yên đâu!",
+        "Those rat! Don't let it see them! Or they will not okay!"
+      ],
+      "price": 6,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "dog": {
+      "name": "dog",
+      "ten": "cho",
+      "unicode": "🐶",
+      "des": [
+        "Gâu Gâu! Chú chó này chỉ biết nói hai từ!",
+        "Bark Bark! That's what this dog say!"
+      ],
+      "price": 6,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "fox": {
+      "name": "fox",
+      "ten": "cáo",
+      "unicode": "🦊",
+      "des": [
+        "Hmm... vậy cuối cùng tiếng kêu của cáo là gì ?",
+        "Hmm... so.. what does the fox say ?"
+      ],
+      "price": 6,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "rooster": {
+      "name": "rooster",
+      "ten": "ga",
+      "unicode": "🐓",
+      "des": [
+        "Dậy đi thôi! Đến giờ trồng một ít lúa rồi!",
+        "Wake up! There is no time to waste"
+      ],
+      "price": 10,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "pig": {
+      "name": "pig",
+      "ten": "heo",
+      "unicode": "🐖",
+      "des": [
+        "Bữa ăn hôm qua không được ngon cho lắm...",
+        "Yesterday meal was not delicious, but it's okay to swallow all!"
+      ],
+      "price": 10,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "ram": {
+      "name": "ram",
+      "ten": "cuu",
+      "unicode": "🐏",
+      "des": [
+        "Hmmm! Chú cừu này có bộ lông rất đẹp",
+        "Hmm! This sheep has a beautiful hair!"
+      ],
+      "price": 10,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "cow2": {
+      "name": "cow2",
+      "ten": "bo",
+      "unicode": "🐄",
+      "des": [
+        "Moo moo! Cho tôi xin ít cỏ!",
+        "Moo moo! Some grass please!"
+      ],
+      "price": 10,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "water_buffalo": {
+      "name": "water_buffalo",
+      "ten": "trau",
+      "unicode": "🐃",
+      "des": [
+        "Bạn có biết, thật ra trâu nước không biết bơi?",
+        "Do you know that: Actually, the water buffaloes can not swim!!"
+      ],
+      "price": 10,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "lizard": {
+      "name": "lizard",
+      "ten": "tac_ke",
+      "unicode": "🦎",
+      "des": [
+        "Bạn có thấy nó đâu không ? Đúng vậy... nó là một nhà ảo thuật!",
+        "Do you see it ? It's disappearing....."
+      ],
+      "price": 50,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "turtle": {
+      "name": "turtle",
+      "ten": "rua",
+      "unicode": "🐢",
+      "des": [
+        "Chú rùa này rất kiên nhẫn, dù phải mất bao lâu, chú ấy cũng phải đến trường!",
+        "This turtle really patient! It's slowly going to school!"
+      ],
+      "price": 50,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "scorpion": {
+      "name": "scorpion",
+      "ten": "bo_cap",
+      "unicode": "🦂",
+      "des": [
+        "Sa mạc rất nóng, nhưng cát sa mạc lại rất dễ sống!",
+        "Hmm.. have you ever gotton a scorpion sting ?"
+      ],
+      "price": 50,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "snake": {
+      "name": "snake",
+      "ten": "ran",
+      "unicode": "🐍",
+      "des": [
+        "Mowgli đâu rồi? Chạy đi, Shere' Khan đang đến!",
+        "Where is Mowgli ? Run ! Shere' Khan is coming!!!"
+      ],
+      "price": 50,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "crocodile": {
+      "name": "crocodile",
+      "ten": "ca_sau",
+      "unicode": "🐊",
+      "des": [
+        "Vua của đầm lầy! Nhưng rất sợ bọn hà mã!",
+        "King of the swamps, but affraid of hippopotamus..."
+      ],
+      "price": 50,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "monkey": {
+      "name": "monkey",
+      "ten": "khi",
+      "unicode": "🐒",
+      "des": [
+        "Sẽ mất bao lâu nữa chúng mới biết code bot nhỉ ?",
+        "Hmmm... how long will it take until it can develop a Discord bot ?"
+      ],
+      "price": 400,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "hippopotamus": {
+      "name": "hippopotamus",
+      "ten": "ha_ma",
+      "unicode": "🦛",
+      "des": [
+        "Bạn có muốn đọ xem ai mở mồm to nhất không",
+        "Wanna bet who'll open the mouth widest ?"
+      ],
+      "price": 400,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "leopard": {
+      "name": "leopard",
+      "ten": "bao",
+      "unicode": "🐆",
+      "des": [
+        "Nếu đi chung với hổ sẽ là trùm trường mẫu giáo!",
+        "If you think you can win it at a run competition, wake up!"
+      ],
+      "price": 400,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "tiger2": {
+      "name": "tiger2",
+      "ten": "ho",
+      "unicode": "🐅",
+      "des": [
+        "Nếu đi chung với báo sẽ là trùm trường mẫu giáo",
+        "The king of Jungle, looking for Mowgli"
+      ],
+      "price": 400,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "elephant": {
+      "name": "elephant",
+      "ten": "voi",
+      "unicode": "🐘",
+      "des": [
+        "Tuy to lớn, nhưng chú voi này lại vô cùng yếu đuối!",
+        "Try to get risk of those rat! How about raising a Cat pet ?"
+      ],
+      "price": 400,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "Ybutterfly": {
+      "name": "Ybutterfly",
+      "ten": "Ybutterfly",
+      "unicode": "<a:Ybutterfly:911682101005398058>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/911682101005398058.png",
+      "des": [
+        "Chú bướm đầy màu sắc này rất kì lạ! Dường như đến từ một thế giới nào đó!",
+        "This colorful butterfly came from alterworld !"
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "Yizumilacmong": {
+      "name": "Yizumilacmong",
+      "ten": "Yizumilacmong",
+      "unicode": "<a:yl_ngoisao:1109036321927872562>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/1109036321927872562.png",
+      "des": [
+        "Người ngoài hành tinh! Đến từ hành tinh Izumi, sở thích show cam lắc đít!",
+        "Alien! From Izumi planet! Like to shake butt!"
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "Ynth": {
+      "name": "Ynth",
+      "ten": "Ynth",
+      "unicode": "<a:yl_ca_zoo:1109035822893764669>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/1109035822893764669.png",
+      "des": [
+        "Một chú cá heo màu hồng, hừm, tên là nth? Nhưng nth là gì nhỉ ?",
+        "A pink dolphin named Nth, but what is nth ?"
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "Ykhatrapboi": {
+      "name": "Ykhatrapboi",
+      "ten": "Ykhatrapboi",
+      "unicode": "<:Ykhatrapboi:918082945686851615>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/918082945686851615.png",
+      "des": [
+        "Nghe đồn tên này đã trap hơn chục cô gái... hắn thật đáng sợ!",
+        "They said this boy trapped for more than 10... how scare..."
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "be_non": {
+      "name": "be_non",
+      "ten": "be_non",
+      "unicode": "<:be_non:918932737543503912>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/918932737543503912.png",
+      "des": [
+        "Non như bạn :) Izu chấp",
+        "With u? She just standing by!"
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "Yu_meobaymau": {
+      "name": "Yu_meobaymau",
+      "ten": "Yu_meobaymau",
+      "unicode": "<a:Yu_meobaymau:944351775597674558>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/944351775597674558.png",
+      "des": [
+        "Chú mèo gây động kinh vì màu sắc sặc sỡ",
+        "A cat that cause epileptic because of the colorful out look!"
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "P_trolllungdz": {
+      "name": "P_trolllungdz",
+      "ten": "P_trolllungdz",
+      "unicode": "<:P_trolllungdz:1137062114717093969>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/1137062114717093969.png",
+      "des": [
+        "Một gương mặt với biểu cảm đơn giản... *Pet được sáng tạo bởi `trung.11`*",
+        "A Simple Face! *Created by `trung.11`*"
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "Yquyxu": {
+      "name": "Yquyxu",
+      "ten": "Yquyxu",
+      "unicode": "<:Yquyxu:941244934797799434>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/941244934797799434.png",
+      "des": [
+        "Con mèo này ngại lắm! Đừng nói nữa, nó sẽ chạy mất!",
+        "This cat very shy! Don't speak to loud, it'll run!"
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "GG_hongchuyen": {
+      "name": "GG_hongchuyen",
+      "ten": "GG_hongchuyen",
+      "unicode": "<a:GG_hongchuyen:911309645681946685>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/911309645681946685.png",
+      "des": [
+        "Có gì hot thế ? Cho hóng tí được không?",
+        "Chewing a piece of cheese, looking for a drama ! That's Jerry the Dramatic Mouse!"
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "G_naisungtam": {
+      "name": "G_naisungtam",
+      "ten": "G_naisungtam",
+      "unicode": "<:G_naisungtam:974392899536056401>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/974392899536056401.png",
+      "des": [
+        "Nai? Có 1 con nai!",
+        "It's not Chirstmas, so this deer will play with you!"
+      ],
+      "price": 1000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "G_kilan": {
+      "name": "G_kilan",
+      "ten": "G_kilan",
+      "unicode": "<:G_kilan:974392813095616542>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/974392813095616542.png",
+      "des": [
+        "Kì lân có thật không",
+        "Does unicorn exist"
+      ],
+      "price": 5000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "G_gautruc": {
+      "name": "G_gautruc",
+      "ten": "G_gautruc",
+      "unicode": "<:G_gautruc:974392721106149466>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/974392721106149466.png",
+      "des": [
+        "Bạn thích ăn trúc không ? Hay tre ? Hay măng ?",
+        "Do you like bamboo?"
+      ],
+      "price": 5000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "G_cho": {
+      "name": "G_cho",
+      "ten": "G_cho",
+      "unicode": "<:G_cho:974392664445308958>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/974392664445308958.png",
+      "des": [
+        "Gâu Gâu Gâu! Chú chó này biết nói ba từ!",
+        "Bark Bark Bark! That's what this dog say!"
+      ],
+      "price": 5000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "G_chim": {
+      "name": "G_chim",
+      "ten": "G_chim",
+      "unicode": "<:G_chim:974392505317597194>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/974392505317597194.png",
+      "des": [
+        "Con chim này có giá trị bằng một con chó biết sủa ba lần!",
+        "This bird's value is equal to a 3-words barking dog!"
+      ],
+      "price": 5000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "G_caoden": {
+      "name": "G_caoden",
+      "ten": "G_caoden",
+      "unicode": "<:G_caoden:974392590029959188>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/974392590029959188.png",
+      "des": [
+        "Con cáo này kêu như thế nào nhỉ ? Hay là sói đây ?",
+        "Hmm... so.. what does the fox say ? Or... wolf ?"
+      ],
+      "price": 5000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "G_bachtuoc": {
+      "name": "G_bachtuoc",
+      "ten": "G_bachtuoc",
+      "unicode": "<:G_bachtuoc:974392970931470347>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/974392970931470347.png",
+      "des": [
+        "Sashimi chứ ?",
+        "How about sashimi ?"
+      ],
+      "price": 5000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "D_Chimera": {
+      "name": "D_Chimera",
+      "ten": "D_Chimera",
+      "unicode": "<:D_Chimera:985411852542562344>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/985411852542562344.png",
+      "des": [
+        "Rắn, sư tử và nai!",
+        "Snake, lion and deer!"
+      ],
+      "price": 10000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "D_Hydra": {
+      "name": "D_Hydra",
+      "ten": "D_Hydra",
+      "unicode": "<:D_Hydra:985411855927349298>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/985411855927349298.png",
+      "des": [
+        "Hydra là một con rồng có 7 hoặc 9 đầu, là con của Echidna và Typhon. Khi chém đứt đầu nó thì từ chỗ bị đứt liền mọc ra hai cái đầu mới.",
+        "Hydra is a dragon with 7 or 9 heads, the child of Echidona and Typhon. When you cut off its head, two new heads grow from the cut."
+      ],
+      "price": 10000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "D_Medusa": {
+      "name": "D_Medusa",
+      "ten": "D_Medusa",
+      "unicode": "<:D_Medusa:985411858557202513>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/985411858557202513.png",
+      "des": [
+        "Nhìn vào mắt của ả, bạn sẽ hóa đá nghìn năm!",
+        "Look into her eyes, you'll be petrified for a thousand years!"
+      ],
+      "price": 10000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "D_Minotaur": {
+      "name": "D_Minotaur",
+      "ten": "D_Minotaur",
+      "unicode": "<:D_Minotaur:985411860922761276>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/985411860922761276.png",
+      "des": [
+        "Một tác phẩm phối hợp giữa một hoàng hậu và một.... con bò.",
+        "A collaboration between a queen and a... cow."
+      ],
+      "price": 10000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "D_Pegasus": {
+      "name": "D_Pegasus",
+      "ten": "D_Pegasus",
+      "unicode": "<:D_Pegasus:985411864324358184>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/985411864324358184.png",
+      "des": [
+        "Pegasus là một thiên mã, con ngựa thần có cánh như chim đại bàng, lông trắng muốt, là con của thần biển Poseidon và Medusa.",
+        "Pegasus is a steed, a divine horse with wings like an eagle, with white feathers, the son of the sea gods Poseidon and Medusa."
+      ],
+      "price": 10000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "V_Cinderella": {
+      "name": "V_Cinderella",
+      "ten": "V_Cinderella",
+      "unicode": "<a:V_Cinderella:988149859745943592>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/988149859745943592.png",
+      "des": [
+        "Sonic is a blue anthropomorphic hedgehog, from an early age he has had great strength and speed and was raised by his sister Long Claw.",
+        "You can't try on her shoes, she has the smallest feet in the world!"
+      ],
+      "price": 50000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "V_Sonic": {
+      "name": "V_Sonic",
+      "ten": "V_Sonic",
+      "unicode": "<a:V_Sonic:988149031291215914>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/988149031291215914.png",
+      "des": [
+        "Sonic là một chú nhím hình người màu xanh, ngay từ khi nhỏ cậu đã có sức mạnh với tốc độ rất nhanh và đươc chị Móng Dài nuôi cậu",
+        "Sonic is a blue anthropomorphic hedgehog, from an early age he has had great strength and speed and was raised by his sister Long Claw."
+      ],
+      "price": 50000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "V_Vanellope": {
+      "name": "V_Vanellope",
+      "ten": "V_Vanellope",
+      "unicode": "<a:V_Vanellope:988148591669440615>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/988148591669440615.png",
+      "des": [
+        "Trong suốt cuộc phiêu lưu của mình, Vanellope sẽ vạch trần sự thật đằng sau trục trặc của cô, đồng thời học cách sử dụng nó như một 'siêu năng lực' để vượt qua nghịch cảnh.",
+        "Over the course of their adventure, Vanellope would unmask the truth behind her glitch, while also learning to use it as a 'superpower' to overcome adversity."
+      ],
+      "price": 50000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "V_Belle": {
+      "name": "V_Belle",
+      "ten": "V_Belle",
+      "unicode": "<a:V_Belle:988150258066423858>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/988150258066423858.png",
+      "des": [
+        "Belle mơ ước được rời khỏi ngôi làng truyền thống của nàng để đi phiêu lưu. Belle cầu xin người đang giam cầm bố mình, Quái thú, thả ông ra, và đồng ý lấy tự do của chính mình thế chỗ cho cha. Quái thú thả Maurice về nhà, với điều kiện Belle phải ở với nó mãi mãi.",
+        "Belle dreams of leaving her traditional village for an adventure. Belle pleads with her father's captor, the Beast, to release him, and agrees to take her own freedom in his place. The Beast releases Maurice home, on the condition that Belle stay with him forever."
+      ],
+      "price": 50000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "V_BossBaby": {
+      "name": "V_BossBaby",
+      "ten": "V_BossBaby",
+      "unicode": "<a:V_BossBaby:988147327292276756>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/988147327292276756.png",
+      "des": [
+        "Đứa bé có thể nói chuyện như một người lớn và nó tự giới thiệu mình là 'Sếp' !",
+        "The baby can talk like an adult and he introduces himself as 'Boss'!"
+      ],
+      "price": 50000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "V_Mikey": {
+      "name": "V_Mikey",
+      "ten": "V_Mikey",
+      "unicode": "<a:V_Mikey:994182093183655966>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/994182093183655966.png",
+      "des": [
+        "Có người nói, Mikey có thể dùng nhan sắc của anh ấy cứu rỗi bạn đấy!",
+        "Someone said, Mikey can use his beauty to save you!"
+      ],
+      "price": 50000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    },
+    "V_chochaynhanh": {
+      "name": "V_chochaynhanh",
+      "ten": "V_chochaynhanh",
+      "unicode": "<a:V_chochaynhanh:1135298298626969660>",
+      "thumbnail" : "https://cdn.discordapp.com/emojis/1135298298626969660.png",
+      "des": [
+        "Một chú chó chạy rất nhanh ! Nó có thể đến với bạn bất cứ lúc nào !",
+        "A running dog is coming really quick !!! Beware of its cuteness!!!"
+      ],
+      "price": 50000,
+      "hp": 100,
+      "mp": 50,
+      "str": 10,
+      "agi": 10,
+      "def": 5,
+      "mdef": 3
+    }
+  }
+}

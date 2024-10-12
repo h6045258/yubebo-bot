@@ -1,0 +1,118 @@
+const vipSchema = require("../../models/vipSchema");
+
+module.exports = {
+  name: "work",
+  aliases: ["w"],
+  category: "Economy",
+  cooldown: 5,
+  description: {
+    content: "Làm việc kiếm tiền",
+    example: "work",
+    usage: "work"
+  },
+  permissions: {
+    bot: ['ViewChannel', 'SendMessages'],
+    user: '',
+  },
+  run: async (client, message, args, prefix, lang) => {
+    try {
+      const author = message.author;
+      let timeouts = 3000;
+      let lastused = await client.cd(author.id, `addngoc`);
+      let used = client.checkcd(lastused, timeouts);
+      let cooldown = used.after;
+      if (!cooldown) {
+        const delay = await message.channel.send({
+          content: lang.economy.cooldown.replace("{value}", used.s),
+        });
+        await client.sleep(5000);
+        await delay.delete();
+        return;
+      } else {
+        await client.timeout(author.id, `addngoc`);
+        let timeout = 3600000;
+        let lastused = await client.cd(author.id, `work1`);
+        let used = client.checkcd(lastused, timeout);
+        let cooldown = used.after;
+        if (!cooldown) {
+          const delay = await message.channel.send({
+            content: lang.economy.work_1
+              .replace("{value1}", message.member.displayName)
+              .replace("{value2}", used.h + `:` + used.m + `:` + used.s),
+          });
+          await client.sleep(5000);
+          await delay.delete();
+          return;
+        } else {
+          await client.timeout(author.id, `work1`);
+          let vip = false;
+          let pro = false;
+          const provip = await vipSchema.findOne({ memberid: author.id });
+          if (provip) {
+            const date = await client.datepassport(author.id);
+            const status = await client.checkpassport(date);
+            let end = status.after;
+            if (!end && provip.type == `<:VIPPassport:988093810955411456>`)
+              vip = true;
+            if (!end && provip.type == `<:ProPassport:988093838348410930>`)
+              pro = true;
+            if (!pro && !vip) {
+              await client.addgem(
+                author.id,
+                `<:GEMBOX:982028743952441355>`,
+                1,
+                0,
+              );
+              let lương = Math.floor(Math.random() * 9) * 100;
+              client.cong(author.id, parseInt(lương));
+              await message.channel.send({
+                content: lang.economy.work_2
+                  .replace("{value1}", message.member.displayName)
+                  .replace("{value2}", lương),
+              });
+            } else if (pro) {
+              await client.addgem(
+                author.id,
+                `<:PRO_GEMBOX:982028744057298964>`,
+                1,
+                0,
+              );
+              let lương = Math.floor(Math.random() * 99) * 100;
+              client.cong(author.id, parseInt(lương));
+              await message.channel.send({
+                content: lang.economy.work_3
+                  .replace("{value1}", message.member.displayName)
+                  .replace("{value2}", lương),
+              });
+            } else if (vip) {
+              await client.addgem(
+                author.id,
+                `<:PRO_GEMBOX:982028744057298964>`,
+                1,
+                0,
+              );
+              await client.addgem(
+                author.id,
+                `<:GEMBOX:982028743952441355>`,
+                1,
+                0,
+              );
+              let lương = Math.floor(Math.random() * 99) * 100;
+              client.cong(author.id, parseInt(lương));
+              await message.channel.send({
+                content: lang.economy.work_4
+                  .replace("{value1}", message.member.displayName)
+                  .replace("{value2}", lương),
+              });
+            }
+          }
+        }
+      }
+    } catch (e) {
+      client.logger.error(e.stack);
+      return message.channel.send({
+        content: lang.economy.work_5,
+      });
+    }
+  },
+};

@@ -1,0 +1,27 @@
+{
+    "dev": [
+        "696893548863422494",
+        "429926615242244096",
+        "921368997482602536",
+        "584411132769337440",
+        "1216638785463390299",
+        "1259350604526911509"
+    ],
+    "lavalink": [
+        {
+            "url": "node.lewdhutao.my.eu.org:80",
+            "auth": "youshallnotpass",
+            "name": "Yubabe Core #1",
+            "secure": false
+        }
+    ],
+    "production": true,
+    "searchEngine": "ytmsearch",
+    "channels": {
+        "guild_log": "1254984152508399627"
+    },
+    "color": {
+        "x": "#000000",
+        "y": "#ee88aa"
+    }
+}

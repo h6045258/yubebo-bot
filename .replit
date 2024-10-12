@@ -1,0 +1,21 @@
+modules = ["nodejs-20", "nix", "bash"]
+hidden = [".config", "package-lock.json"]
+run = "node ."
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", "package.json", "package-lock.json"]
+
+[nix]
+channel = "stable-24_05"
+
+[unitTest]
+language = "nodejs"
+
+[deployment]
+run = ["sh", "-c", "node ."]
+deploymentTarget = "cloudrun"
+ignorePorts = false
+
+[[ports]]
+localPort = 88
+externalPort = 80
